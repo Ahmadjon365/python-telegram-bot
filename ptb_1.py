@@ -1,5 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, KeyboardButton
+from geo_loc import get_location
 
 token = "7688427772:AAEQTKMp3DqIEizhN5fvqBbsGd7oPI8Jjmg"
 admin_id = 92091371
@@ -12,10 +13,9 @@ def start_func(update, context):
 
 def menu(update, context):
     buttons = [
-        [KeyboardButton("📞 Raqam yuborish", request_contact=True), KeyboardButton("📷 Manzil yuborish", request_location=True),
-         KeyboardButton("📍 So'rov yuborish", request_poll=True)],
-        [KeyboardButton("Menu 3"), KeyboardButton("Menu 4")],
-    ]
+        [KeyboardButton("📞 Raqam yuborish", request_contact=True), KeyboardButton("📷 Manzil yuborish", request_location=True)],
+        [KeyboardButton("Menu 3"), KeyboardButton("Menu 4")],]
+
     update.message.reply_text(
         text="Iltimos, kerakli bo'limni tanlang:",
         reply_markup=ReplyKeyboardMarkup(buttons, resize_keyboard=True)
@@ -44,6 +44,9 @@ def location_handler(update, context):
     location = update.message.location
     # update.message.reply_location(latitude=location.latitude, longitude=location.longitude)
     context.bot.send_location(chat_id=admin_id, latitude=location.latitude, longitude=location.longitude)
+    update.message.reply_text(text=f"latitude={location.latitude}, longitude={location.longitude}")
+    address = get_location(location.latitude, location.longitude)
+    update.message.reply_text(text=f"Manzil: {address}")
 
 # def poll_handler(update, context):
 #     poll = update.message.poll
