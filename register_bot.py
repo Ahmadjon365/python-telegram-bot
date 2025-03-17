@@ -111,15 +111,17 @@ def geolocation(update, context):
     
     # ✅ To‘g‘ri formatlangan javob qaytarish
     user_data = context.user_data
-    update.message.reply_text(f"""Sizning ma'lumotlaringiz:
+    reply_markup=ReplyKeyboardMarkup(
+        [[KeyboardButton(text="/start")]], resize_keyboard=True, one_time_keyboard=True)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=f"""Sizning ma'lumotlaringiz:
 📞 Telefon: {user_data['phone_number']}
 👤 Ism: {user_data['first_name']}
 🆔 Familiya: {user_data['last_name']}
 🔢 Yosh: {user_data['age']}
 🚻 Jins: {user_data['gender']}
 📍 Manzil: {user_data['address']}
-    """)
-    
+    """, reply_markup=reply_markup)
+
     return ConversationHandler.END
 
 
