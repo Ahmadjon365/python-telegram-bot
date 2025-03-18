@@ -2,8 +2,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 from telegram import ReplyKeyboardMarkup, KeyboardButton, BotCommand, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 from geo_loc import get_location
 
-token = "7688427772:AAEQTKMp3DqIEizhN5fvqBbsGd7oPI8Jjmg"
-admin_id = 92091371
+token = "YOUR_BOT_TOKEN"
+admin_id = 00000000
 
 inl_butt = [
     [InlineKeyboardButton(text="Rasm jo'nat", callback_data="send_photo"),
