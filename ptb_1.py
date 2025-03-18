@@ -2,8 +2,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from telegram import ReplyKeyboardMarkup, KeyboardButton
 from geo_loc import get_location
 
-token = "7688427772:AAEQTKMp3DqIEizhN5fvqBbsGd7oPI8Jjmg"
-admin_id = 92091371
+token = "YOUR_BOT_TOKEN"
+admin_id = 00000000
 
 def start_func(update, context):
     update.message.reply_text(text="Assalomu aleykum!")
